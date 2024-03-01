@@ -63,8 +63,10 @@
                             <i class="fa fa-download"></i> Ekpor PDF</a>
                         </div>
 
-                        <table class="table table-bordered">
-                            <thead>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered">
+                                <thead class="background-radial-gradient overflow-hidden text-white">
+                                <tr>
                                 <tr>
                                     <th class="px-4 py-2">Nama Peminjam</th>
                                     <th class="px-4 py-2">Buku yang Dipinjam</th>
@@ -87,7 +89,7 @@
                                                 <form action="{{ route('peminjaman.kembalikan', $p->id) }}" method="post">
                                                     @csrf
                                                     <button class="btn btn-primary" type="submit">
-                                        <i class="fas fa-sync"></i>    
+                                        <i class="fas fa-sync"> Kembalikan</i>    
                                         </button>
                                                 </form>
                                             @else

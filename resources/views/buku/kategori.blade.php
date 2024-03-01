@@ -48,14 +48,17 @@
             <div class="card">
                 <div class="card-header">
                     <div class="mb-4">
-                        <a class="btn btn-dark" href="{{route('kategori.create')}}">
+                    
+                        <a class="btn btn-outline-dark" href="{{route('kategori.create')}}">
                             + Tambah Data Kategori
                         </a>
                     </div>
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered">
-                        <thead>
+                <div class="table-responsive">
+                            <table class="table table-striped table-bordered">
+                                <thead class="background-radial-gradient overflow-hidden text-white">
+                                <tr>
                             <tr>
                                 <th class="px-4 py-2">Nama Kategori</th>
                                 <th class="px-4 py-2">Aksi</th>

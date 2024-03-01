@@ -42,6 +42,8 @@
       background-color: hsla(0, 0%, 100%, 0.9) !important;
       backdrop-filter: saturate(200%) blur(25px);
     }
+
+
   </style>
     <div class="container py-4">
         <div class="row justify-content-center">
@@ -51,15 +53,16 @@
 
                     <div class="card-body">
                         <div class="mb-4">
-                            <a href="{{ route('buku.create') }}" class="btn btn-dark">
+                            <a href="{{ route('buku.create') }}" class="btn btn-outline-dark">
                                 + Tambah Data Buku
                             </a>
                         </div>
 
-                        <table class="table table-bordered">
-                            <thead>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered">
+                                <thead class="background-radial-gradient overflow-hidden text-white">
                                 <tr>
-                                  
+                                    <th>foto</th>
                                     <th>Judul Buku</th>
                                     <th>Penulis</th>
                                     <th>Penerbit</th>
@@ -72,7 +75,9 @@
                             <tbody>
                                 @forelse ($buku as $b)
                                     <tr>
-                                        
+                                    <td class="px-4 py-2 border">
+                                        <img src="{{ asset('storage/'.$b->foto) }}" alt="Foto Buku" width="100">
+                                    </td>
                                         <td>{{ $b->judul }}</td>
                                         <td>{{ $b->penulis }}</td>
                                         <td>{{ $b->penerbit }}</td>
