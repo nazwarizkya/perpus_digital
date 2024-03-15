@@ -36,6 +36,7 @@ class KategoriController extends Controller
     }
     public function edit($id)
 {
+    
     $kategori = Kategori::findOrFail($id);
     return view('buku.edit_kategori', ['kategori'=>$kategori]);
 }

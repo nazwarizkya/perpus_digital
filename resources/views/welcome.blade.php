@@ -135,9 +135,10 @@
                 <div class="card mb-3" >
                     <img src="{{ asset('storage/'.$b->foto) }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">{{$b->judul}}</h5>
-                        <p class="card-text">{{$b->deskripsi}}</p>
-                        <button type="button" class="btn btn-outline-dark">Detail buku</button>
+                        <h6 class="card-title">{{$b->judul}}</h6>
+                   
+                        <a href="{{ route('buku.show', $b->id) }}" class="btn btn-outline-dark"> Detail Buku </a>
+                       
                     </div>
                 </div>
             </div>

@@ -43,14 +43,14 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="home">
+                <a class="nav-link" href="{{url('/home')}}">
                     <i class="fas fa-fw fa-thumbtack"></i>
                     <span>Dashboard</span></a>
             </li>
 
           
 
-            
+            @role('admin')
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -60,15 +60,18 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
+            
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
+                   
                     <i class="fas fa-fw fa-wrench"></i>
+                    
                     <span> Kelola Perpustakaan</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                     
+                        
                         <a class="collapse-item" href="{{route('buku.index')}}">Data Buku</a>
                         <a class="collapse-item" href="{{route('peminjaman.index')}}">Data Peminjaman</a>
                         <a class="collapse-item" href="{{route('kategori')}}">Kategori</a>
@@ -77,7 +80,13 @@
                     </div>
                 </div>
             </li>
-
+            @endrole
+            @role('user')
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/user/peminjaman')}}">
+                    <span>Peminjaman Saya</span></a>
+            </li>
+            @endrole
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

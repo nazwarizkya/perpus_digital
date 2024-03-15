@@ -67,6 +67,7 @@
                                     <th>Penulis</th>
                                     <th>Penerbit</th>
                                     <th>Tahun Terbit</th>
+                                    <th>sinopsis</th>
                                     <th>Aksi</th>
 
                                     
@@ -82,6 +83,7 @@
                                         <td>{{ $b->penulis }}</td>
                                         <td>{{ $b->penerbit }}</td>
                                         <td>{{ $b->tahun_terbit }}</td>
+                                        <td>{{ $b->deskripsi }}</td>
                                        
                               
                                     <td>

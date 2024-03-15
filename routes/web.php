@@ -3,7 +3,7 @@ use App\Http\Controllers\BukuController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PeminjamanController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [BukuController::class, 'welcome']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
+
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::middleware('auth')->group(function () {
+Route::middleware('auth', 'role:admin')->group(function () {
     Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori');
     Route::get('/kategori/create', [KategoriController::class, 'create'])->name('kategori.create');
     Route::post('/kategori/store', [KategoriController::class, 'store'])->name('kategori.store');
@@ -34,9 +34,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/peminjaman/selesai/{id}', [PeminjamanController::class, 'kembalikanBuku'])->name('peminjaman.kembalikan');
     Route::post('/buku/store', [BukuController::class, 'store'])->name('buku.store');
     Route::get('/buku/edit/{id}', [BukuController::class, 'edit'])->name('buku.edit');
-    Route::patch('/buku/update/{id}', [BukuController::class, 'update'])->name('buku.update');
+    
+    Route::put('/buku/update/{id}', [BukuController::class, 'update'])->name('buku.update');
     Route::get('/kategori/edit/{id}',[KategoriController::class, 'edit'])->name('kategori.edit');
     Route::post('/kategori/update/{id}',[KategoriController::class, 'update'])->name('kategori.update');
     Route::get('/report', [PeminjamanController::class, 'print'])->name('print'); 
+    
 });
-
+//user
+Route::get('/user/peminjaman', [PeminjamanController::class, 'userPeminjaman'])->name('peminjaman.user')
+->middleware(['auth', 'role:user']);
+Route::get('/buku/detail/{id}', [BukuController::class, 'show'])->name('buku.show');
