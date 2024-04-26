@@ -1,54 +1,16 @@
 @extends('layouts.master')
 
 @section('content')
-<section class="background-radial-gradient overflow-hidden">
-  <style>
-    .background-radial-gradient {
-      background-color: hsl(218, 41%, 15%);
-      background-image: radial-gradient(650px circle at 0% 0%,
-          hsl(218, 41%, 35%) 15%,
-          hsl(218, 41%, 30%) 35%,
-          hsl(218, 41%, 20%) 75%,
-          hsl(218, 41%, 19%) 80%,
-          transparent 100%),
-        radial-gradient(1250px circle at 100% 100%,
-          hsl(218, 41%, 45%) 15%,
-          hsl(218, 41%, 30%) 35%,
-          hsl(218, 41%, 20%) 75%,
-          hsl(218, 41%, 19%) 80%,
-          transparent 100%);
-    }
-
-    #radius-shape-1 {
-      height: 220px;
-      width: 220px;
-      top: -60px;
-      left: -130px;
-      background: radial-gradient(#44006b, #ad1fff);
-      overflow: hidden;
-    }
-
-    #radius-shape-2 {
-      border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
-      bottom: -60px;
-      right: -110px;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(#44006b, #ad1fff);
-      overflow: hidden;
-    }
-
-    .bg-glass {
-      background-color: hsla(0, 0%, 100%, 0.9) !important;
-      backdrop-filter: saturate(200%) blur(25px);
-    }
-  </style>
-    <div class="container py-4">
+<div class="container py-4">
         <div class="row justify-content-center">
-            <div class="col-md-12">
+            <div class="col-md-11">
                 <div class="card">
-                    <div class="card-body bg-white">
-                        <h1 class="h3 font-weight-bold mb-4">Data Peminjaman</h1>
+                    <div class="card-header">
+                    <div class="card-body">
+                        <div class="mb-4">Data Peminjaman</h1>
+                        <br>
+                        <br>
+
                         @if(session('success'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('success') }}
@@ -65,13 +27,14 @@
 
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered">
-                                <thead class="background-radial-gradient overflow-hidden text-white">
+                            <thead class="bg-dark text-white">
                                 <tr>
                                 <tr>
                                     <th class="px-4 py-2">Nama Peminjam</th>
                                     <th class="px-4 py-2">Buku yang Dipinjam</th>
-                                    <th class="px-4 py-2">Tanggal Peminjaman</th>
-                                    <th class="px-4 py-2">Tanggal Pengembalian</th>
+                                    <th class="px-4 py-2">Tgl Peminjaman</th>
+                                    <th class="px-4 py-2">Tgl Harus kembali</th>
+                                    <th class="px-4 py-2">tgl Pengembalian </th>
                                     <th class="px-4 py-2">Status</th>
                                     <th class="px-4 py-2">Aksi</th>
                                 </tr>
@@ -83,18 +46,37 @@
                                         <td class="px-4 py-2">{{ $p->buku->judul }}</td>
                                         <td class="px-4 py-2">{{ $p->tanggal_peminjaman }}</td>
                                         <td class="px-4 py-2">{{ $p->tanggal_pengembalian }}</td>
-                                        <td class="px-4 py-2">{{ $p->status }}</td>
+                                        <td class="px-4 py-2">{{ $p->sekarang }}</td>
+                                      
+                                        <td class="px-4 py-2">
+
+                                       
+                                            @if ($p->status === 'Dipinjam')
+                                            <span class="badge bg-warning">{{ $p->status }}</span>
+                                            @elseif ($p->status === 'Dikembalikan')
+                                            <span class="badge bg-primary">{{ $p->status }}</span>
+                                            @elseif ($p->status === 'Denda')
+                                            <span class="badge bg-danger">{{ $p->status }}</span>
+                                            @endif
+                                    
                                         <td class="px-4 py-2">
                                             @if($p->status === 'Dipinjam')
-                                                <form action="{{ route('peminjaman.kembalikan', $p->id) }}" method="post">
+                                                <form id="from_{{$p->id}}"action="{{ route('peminjaman.kembalikan', $p->id) }}" method="post">
                                                     @csrf
-                                                    <button class="btn btn-primary" type="submit">
+                                                    <button class="btn btn-dark" type="submit">
+
                                         <i class="fas fa-sync"> Kembalikan</i>    
                                         </button>
-                                                </form>
-                                            @else
+
+                                        @elseif ($p->status ==='Denda')
+                                        <a href="{{route ('peminjaman.denda', $p->id)}}" class="btn btn-danger">
+                                            Bayar denda
+                                        </a>
+                                           
+                                            @else($p-> === 'Dikembalikan')
                                                 -
                                             @endif
+                                        </td>
                                         </td>
                                     </tr>
                                 @empty

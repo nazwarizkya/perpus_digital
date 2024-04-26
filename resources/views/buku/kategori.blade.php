@@ -1,55 +1,14 @@
 @extends ('layouts.master')
 @section ('content')
-<section class="background-radial-gradient overflow-hidden">
-  <style>
-    .background-radial-gradient {
-      background-color: hsl(218, 41%, 15%);
-      background-image: radial-gradient(650px circle at 0% 0%,
-          hsl(218, 41%, 35%) 15%,
-          hsl(218, 41%, 30%) 35%,
-          hsl(218, 41%, 20%) 75%,
-          hsl(218, 41%, 19%) 80%,
-          transparent 100%),
-        radial-gradient(1250px circle at 100% 100%,
-          hsl(218, 41%, 45%) 15%,
-          hsl(218, 41%, 30%) 35%,
-          hsl(218, 41%, 20%) 75%,
-          hsl(218, 41%, 19%) 80%,
-          transparent 100%);
-    }
 
-    #radius-shape-1 {
-      height: 220px;
-      width: 220px;
-      top: -60px;
-      left: -130px;
-      background: radial-gradient(#44006b, #ad1fff);
-      overflow: hidden;
-    }
-
-    #radius-shape-2 {
-      border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
-      bottom: -60px;
-      right: -110px;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(#44006b, #ad1fff);
-      overflow: hidden;
-    }
-
-    .bg-glass {
-      background-color: hsla(0, 0%, 100%, 0.9) !important;
-      backdrop-filter: saturate(200%) blur(25px);
-    }
-  </style>
 <div class="container py-4">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <div class="mb-4">
-                    
-                        <a class="btn btn-outline-dark" href="{{route('kategori.create')}}">
+<div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-body">
+                        <div class="mb-4">
+                        <a class="btn btn-dark" href="{{route('kategori.create')}}">
                             + Tambah Data Kategori
                         </a>
                     </div>
@@ -57,7 +16,7 @@
                 <div class="card-body">
                 <div class="table-responsive">
                             <table class="table table-striped table-bordered">
-                                <thead class="background-radial-gradient overflow-hidden text-white">
+                            <thead class="bg-dark text-white">
                                 <tr>
                             <tr>
                                 <th class="px-4 py-2">Nama Kategori</th>

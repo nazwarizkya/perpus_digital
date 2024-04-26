@@ -46,7 +46,7 @@
   <br>
   <br>
   <div class="h4 pb-2 mb-4 text-light border-bottom border-light">
-  <center><font color="white"><h3> Aboute Book!!</h3></font></center>
+  <center><font color="white"><h3> ABOUTE BOOK!!</h3></font></center>
   </div>
   <br>
   

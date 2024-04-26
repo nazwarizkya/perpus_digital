@@ -124,7 +124,7 @@
 </style>
 <div class="h4 pb-2 mb-4 text-light border-bottom border-light">
     <img src="{{asset('rsc/img/y.png')}}">
-  nasaperpus.id
+  nzwaperpus.id
 </div>
 
 

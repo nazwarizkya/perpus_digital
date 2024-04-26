@@ -1,10 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-        <div class="container">
-            <nav class="navbar navbar-dark bg-primary">
-                <div class="container">
-                    <a class="navbar-brand" href="#">
+<div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-lg">
+                    <div class="card-body">
                         <b> Edit Kategori</b>
                     </a>
                 </div>
